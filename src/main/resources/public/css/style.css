@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    background: #FC5C7D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+footer{
+    padding-right: 1.5em;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    background: black;
+    width: 100vw;
+}
+
+h3 {
+    color: #240b36;
+    margin-bottom: 4px;
+}
+
+form {
+    margin: 10px auto;
+    width: 200px;
+}
+form #input_data{
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid black;
+    margin-bottom: 3px;
+    font-size: 1.5rem;
+}
+
+form button{
+    color: #12D8FA;
+    background: none;
+    border: 2px solid;
+    font: inherit;
+    font-weight: bold;
+    line-height: 1;
+    margin: 2px;
+    padding: 10px;
+    transition: 0.25s;
+}
+
+form button:hover,
+form button:focus {
+    filter: hue-rotate(90deg);
+    animation: pulse 1s;
+    box-shadow: 0 0 0 2em transparent;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); }
+}
+
+.resultado{
+    border-radius: 20px;
+    border: 2px solid black;
+    font-size: 3rem;
+    color: white;
+    background-color: black;
+    text-align: center
+}
+
+.rota{
+    color: black;
+    font-size: 1.5rem;
+
+}

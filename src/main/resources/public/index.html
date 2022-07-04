@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>API Calculadora</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>
+        Calculadora feita com Java Spark!
+    </h1>
+    <div class="inputs">
+        <h3>
+            Insira a sequência de números desejados SEPARADOS POR ESPAÇO no input a baixo e em seguida click no botão da operação desejada.
+        </h3>
+        <!-- --
+        <form method="get" action="#">
+            <input type="text" name="expr" id="exprID" placeholder="Digite a expresão aqui...">
+            <button id="calcular">Enviar</button>
+        </form>
+        !-- -->
+        <form onsubmit="return add()">
+
+            <input id="input_data" type="text" />
+            <a class="rota">Rota: /</a>
+            <br/>
+            <button id="somar">Somar</button>
+            <button id="subtrair">Subtrair</button>
+            <button id="multiplicar">Multiplicar</button>
+            <button id="dividir">Dividir</button>
+            <button id="raiz">Raiz</button>
+            <button id="potencia">Potência</button>
+            <button id="porcento">Porcentagem</button>
+            <br />
+            <div class="resultado">Resultado</div>
+        </form>
+    </div>
+<footer>
+    ©GabrielGhostK
+</footer>
+</body>
+<script>
+        const btnSoma = document.querySelector("#somar");
+        const btnSub = document.querySelector("#subtrair");
+        const btnMult = document.querySelector("#multiplicar");
+        const btnDiv = document.querySelector("#dividir");
+        const btnRaiz = document.querySelector("#raiz");
+        const btnPot = document.querySelector("#potencia");
+        const btnPorc = document.querySelector("#porcento");
+
+        function buscarResult (url){
+            document.querySelector(".rota").innerHTML = `Rota: <span class='rota'><a href='${url}' target='_blank'>${url}</a></span>`;
+            return fetch(url)
+           .then(resultado => resultado.json())
+           .then(json => {
+                   return json.resultado;
+           })
+           .catch(err => console.log(err))
+        }
+
+        btnSoma.addEventListener("click", (e) => {
+            e.preventDefault();
+            const expr = document.querySelector("#input_data").value;
+
+           let url = `/soma/${expr}`;
+           buscarResult(url).then((resp) => {
+                document.querySelector(".resultado").innerHTML = resp;
+           });
+        })
+
+        btnSub.addEventListener("click", (e) => {
+            e.preventDefault();
+            const expr = document.querySelector("#input_data").value;
+
+           let url = `/sub/${expr}`;
+           buscarResult(url).then((resp) => {
+                document.querySelector(".resultado").innerHTML = resp;
+           });
+        })
+
+        btnMult.addEventListener("click", (e) => {
+            e.preventDefault();
+            const expr = document.querySelector("#input_data").value;
+
+           let url = `/mult/${expr}`;
+           buscarResult(url).then((resp) => {
+                document.querySelector(".resultado").innerHTML = resp;
+           });
+        })
+
+        btnDiv.addEventListener("click", (e) => {
+            e.preventDefault();
+            const expr = document.querySelector("#input_data").value;
+
+           let url = `/div/${expr}`;
+           buscarResult(url).then((resp) => {
+                document.querySelector(".resultado").innerHTML = resp;
+           });
+        })
+
+        btnRaiz.addEventListener("click", (e) => {
+            e.preventDefault();
+            const expr = document.querySelector("#input_data").value;
+
+            let url = `/raiz/${expr}`;
+           buscarResult(url).then((resp) => {
+                document.querySelector(".resultado").innerHTML = resp;
+           });
+        })
+
+        btnPot.addEventListener("click", (e) => {
+            e.preventDefault();
+            const expr = document.querySelector("#input_data").value;
+
+            let url = `/pot/${expr}`;
+           buscarResult(url).then((resp) => {
+                document.querySelector(".resultado").innerHTML = resp;
+           });
+        })
+
+        btnPorc.addEventListener("click", (e) => {
+            e.preventDefault();
+            const expr = document.querySelector("#input_data").value;
+
+            let url = `/porc/${expr}`;
+           buscarResult(url).then((resp) => {
+                document.querySelector(".resultado").innerHTML = resp;
+           });
+        })
+
+    </script>
+</html>
